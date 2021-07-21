@@ -6,7 +6,7 @@
 /*   By: tmatis <tmatis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/21 16:47:46 by tmatis            #+#    #+#             */
-/*   Updated: 2021/07/21 19:32:57 by tmatis           ###   ########.fr       */
+/*   Updated: 2021/07/21 19:35:42 by tmatis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,33 @@ const int Fixed::_fixed_point = 8;
 /*                           CONSTRUCTOR - DESTRUCTOR                         */
 /* ************************************************************************** */
 
-Fixed::Fixed(void) : _value(0) {}
+Fixed::Fixed(void) : _value(0)
+{
+	std::cout << "Default constructor called" << std::endl;
+}
 
 Fixed::Fixed(const Fixed &src)
 {
+	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
+}
+
+Fixed::~Fixed(void)
+{
+	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const int n)
 {
+	std::cout << "Int constructor called" << std::endl;
 	this->_value = n << this->_fixed_point;
 }
 
 Fixed::Fixed(const float n)
 {
+	std::cout << "Float constructor called" << std::endl;
 	this->_value = int(roundf(n * (1 << this->_fixed_point)));
 }
-
-Fixed::~Fixed(void) {}
 
 /* ************************************************************************** */
 /*                              OVERLOAD FONCTIONS                            */
@@ -49,6 +58,7 @@ Fixed::~Fixed(void) {}
 
 Fixed	&Fixed::operator=(const Fixed &right)
 {
+	std::cout << "Assignation operator called" << std::endl;
 	this->_value = right.getRawBits();
 	return (*this);
 }
