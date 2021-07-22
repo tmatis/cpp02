@@ -8,8 +8,10 @@
 class Point
 {
 	private:
-		Fixed	_x;
-		Fixed	_y;
+		Fixed		_x;
+		const Fixed	x;
+		Fixed		_y;
+		const Fixed	y;
 	public:
 						Point(const Point &src);
 						Point(void);
